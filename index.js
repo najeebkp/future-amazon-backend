@@ -39,6 +39,7 @@ app.get("/", (req, res) => {
       res.send(error);
       return;
     }
+    res.set("Access-Control-Allow-Origin", "*");
     res.send(data);
   });
 });
@@ -50,6 +51,7 @@ app.get("/featured", (req, res) => {
       res.send(error);
       return;
     }
+    res.set("Access-Control-Allow-Origin", "*");
     res.send(data);
   });
 });
@@ -59,6 +61,7 @@ app.get("/:id", (req, res) => {
   Data.findById(req.params.id, function (err, user) {
     if (err) {
       console.log("error");
+      res.set("Access-Control-Allow-Origin", "*");
       res.send({ message: "Item Not Found" });
       return;
     }
