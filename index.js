@@ -18,7 +18,7 @@ const dataSchema = new mongoose.Schema({
   price: Number,
   description: String,
   category: String,
-  image: String,
+  image: Array,
   rating: {
     rate: Number,
     count: Number,
@@ -28,7 +28,7 @@ const dataSchema = new mongoose.Schema({
 
 var Data = mongoose.model("future-amazon-db", dataSchema, "amazon-db");
 // port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 app.listen(port);
 
@@ -65,6 +65,7 @@ app.get("/:id", (req, res) => {
       res.send({ message: "Item Not Found" });
       return;
     }
+    res.header("Access-Control-Allow-Origin", "*");
     res.send(user);
     console.log("no error");
   });
