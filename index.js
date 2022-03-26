@@ -27,8 +27,10 @@ const dataSchema = new mongoose.Schema({
 });
 
 var Data = mongoose.model("future-amazon-db", dataSchema, "amazon-db");
+// port
+const port = process.env.PORT || 3000;
 
-app.listen(8000);
+app.listen(port);
 
 // complete product list
 app.get("/", (req, res) => {
